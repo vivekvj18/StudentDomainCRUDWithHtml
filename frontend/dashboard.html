@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Student Domain</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container glass-panel">
+        <div class="header">
+            <div>
+                <h2>🎓 Domain Manager</h2>
+                <p>Hello, <span id="userEmail">Admin</span></p>
+            </div>
+            <button onclick="handleLogout()" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+
+        <div class="action-bar">
+            <button class="btn btn-add" onclick="openModal()">
+                <i class="fas fa-plus-circle"></i> Add New Domain
+            </button>
+        </div>
+
+        <div class="table-responsive">
+            <table id="domainsTable">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Batch</th>
+                        <th>Capacity</th>
+                        <th>Qualification</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="5" style="text-align:center;">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="domainModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Add New Domain</h3>
+            <br>
+            <form id="domainForm">
+                <input type="hidden" id="domainId">
+                <div class="form-group">
+                    <label>Program Name</label>
+                    <input type="text" id="program" placeholder="e.g. M.Tech CSE" required>
+                </div>
+                <div class="form-group">
+                    <label>Batch</label>
+                    <input type="text" id="batch" placeholder="e.g. 2025" required>
+                </div>
+                <div class="form-group">
+                    <label>Capacity</label>
+                    <input type="number" id="capacity" placeholder="e.g. 60" required>
+                </div>
+                <div class="form-group">
+                    <label>Qualification Required</label>
+                    <input type="text" id="qualification" placeholder="e.g. B.Tech CS/IT" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Domain</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeStudentModal()">&times;</span>
+            <h3>🧑‍🎓 Enrolled Students</h3>
+            <p id="studentDomainName" style="color:#666; font-size:0.9rem;"></p>
+            <hr style="margin:10px 0; border:0; border-top:1px solid #eee;">
+            
+            <ul id="studentList">
+                </ul>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
